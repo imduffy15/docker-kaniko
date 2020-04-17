@@ -1,0 +1,14 @@
+sudo: required
+env:
+  global:
+    - DOCKER_IMAGE=imduffy15/kaniko
+    - DOCKER_TAG=0.0.1
+services:
+  - docker
+script:
+  - docker build -t $DOCKER_IMAGE:$DOCKER_TAG-$TRAVIS_BUILD_NUMBER .
+  - docker tag $DOCKER_IMAGE:$DOCKER_TAG-$TRAVIS_BUILD_NUMBER $DOCKER_IMAGE:latest
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push $DOCKER_IMAGE:$DOCKER_TAG-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_IMAGE:latest
