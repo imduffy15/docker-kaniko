@@ -6,3 +6,6 @@ ENV SSL_CERT_DIR=/kaniko/ssl/certs
 ENV DOCKER_CONFIG=/kaniko/.docker/
 
 COPY --from=gcr.io/kaniko-project/executor:debug /kaniko /kaniko
+
+RUN rm -rf /bin/sh && \
+	ln -s /bin/bash /bin/sh
