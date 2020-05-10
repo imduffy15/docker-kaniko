@@ -6,7 +6,7 @@ COPY --from=gcr.io/kaniko-project/executor:debug /kaniko/warmer /usr/bin/warmer
 RUN rm -rf /bin/sh && \
     ln -s /bin/bash /bin/sh
 
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip awscli
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     git \
