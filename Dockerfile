@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     git \
     curl \
     jq \
+    make \
     && rm -rf /var/lib/apt/lists/*
 
 ENV GCLOUD_VERSION=290.0.0
