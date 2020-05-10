@@ -38,3 +38,7 @@ RUN curl -L https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_l
 RUN curl -f -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
     chmod +x kubectl && \
     mv kubectl /usr/bin/
+
+COPY entrypoint.sh /entrypoint
+
+ENTRYPOINT /entrypoint
